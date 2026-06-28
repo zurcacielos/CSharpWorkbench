@@ -1,0 +1,23 @@
+# C# / .NET
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# IDEs
+.vscode/
+.idea/
+.vs/
+
+# Customizations
+.agents/
+
+# Testing
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Local specific files
+*.local.*
