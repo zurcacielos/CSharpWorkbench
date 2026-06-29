@@ -133,6 +133,19 @@ Build an aggregator that receives raw records and produces report data grouped b
 - Request Validation
 - Error Response Model
 
+## Refactoring
+
+- Extract Interface and Apply Dependency Injection (Break tight coupling)
+- Replace Complex Conditional logic with Strategy Pattern / Polymorphism
+- Refactor Synchronous Code to Async/Await (Fix blocking calls & deadlocks)
+- Decompose a "God Class" / Massive Controller (Single Responsibility Principle)
+- Fix N+1 Query Problem in Entity Framework (Optimize data access)
+- Move Business Logic from Controllers to Services or CQRS Handlers
+- Refactor Error Handling to Use the Result Pattern or Global Middleware
+- Extract Hardcoded Values into the Options Pattern (IOptions<T>)
+- Add Seams and Unit Tests to Legacy, Untested Code
+- Introduce Caching (e.g., Redis) and Pagination to a Slow Endpoint
+
 ## Testing Checklist
 
 - Happy path
