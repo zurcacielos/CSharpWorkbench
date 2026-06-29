@@ -1,6 +1,6 @@
 Console.WriteLine("Welcome to the CSharpWorkbench!");
 Console.WriteLine("--------------------------------");
-Console.WriteLine("To run specific tests, copy and paste the following commands into the Antigravity terminal:\n");
+Console.WriteLine("To run specific tests, copy and paste the following commands into the terminal:\n");
 
 Console.WriteLine("> Run LINQ Practice tests:");
 Console.WriteLine("dotnet test --filter LinqTest\n");
