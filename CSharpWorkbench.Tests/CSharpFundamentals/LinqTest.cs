@@ -94,12 +94,15 @@ public class LinqTest
         var productSummaries = _products.Select(p => new { p.Name, p.Price });
 
         // YOUR TURN:
+        var ps = _products.Select(p => new { p.Name, p.Price });
+
 
         // ---------------------------------------------------------
         // 3. Select (with index): Map values using their index.
         var indexedNames = _products.Select((p, index) => $"{index + 1}. {p.Name}");
 
         // YOUR TURN:
+        var indexedN = _products.Select((p, index) => $"{index + 1}. {p.Name}");
 
         // ---------------------------------------------------------
         // 4. SelectMany: Flattens a sequence of sequences.
@@ -108,6 +111,7 @@ public class LinqTest
         var flattened = nestedLists.SelectMany(list => list);
 
         // YOUR TURN:
+        var flat = nestedLists.SelectMany(list => list);
 
         // ---------------------------------------------------------
         // 5. Cast: Casts elements to a specific type (throws InvalidCastException if it fails).
@@ -115,6 +119,8 @@ public class LinqTest
         var castedObjects = new object[] { 1, 2, 3 }.Cast<int>();
 
         // YOUR TURN:
+        var co = new object[] { 1, 2, 3 }.Cast<int>();
+
     }
 
     [Fact]
@@ -126,6 +132,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. Take (Range/Last N): Gets the last N elements (using index from end, C# 8+)
         // var last2 = _products.Take(^2..); // Or just _products.TakeLast(2);
@@ -133,11 +140,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 3. TakeWhile: Takes elements as long as a condition is true, stops at the first failure.
         var untilExpensive = _products.TakeWhile(p => p.Price < 1000m);
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 4. Skip: Bypasses the first N elements.
@@ -145,17 +154,21 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 5. SkipWhile: Bypasses elements as long as a condition is true, then returns the rest.
         var skipCheap = _products.SkipWhile(p => p.Price < 1000m);
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 6. Chunk: Splits elements into chunks of a given size. (Very useful for batch processing)
         var productBatches = _products.Chunk(3); // Yields arrays of max 3 products
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -167,11 +180,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. OrderByDescending: Sorts descending.
         var mostExpensiveFirst = _products.OrderByDescending(p => p.Price);
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 3. ThenBy: Secondary sort ascending (used after OrderBy).
@@ -181,6 +196,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 4. ThenByDescending: Secondary sort descending.
         var sortedByCategoryThenPriceDesc = _products
@@ -189,11 +205,14 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 5. Reverse: Reverses the sequence (not a sort, just flips the order).
         var reversedProducts = _products.AsEnumerable().Reverse();
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -211,6 +230,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. GroupBy (with element selector): Groups elements, but transforms the elements in the group.
         var namesByCategory = _products.GroupBy(
@@ -219,12 +239,15 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 3. ToLookup: Like GroupBy, but executes immediately and returns a dictionary-like ILookup.
         var productLookup = _products.ToLookup(p => p.Category);
         var electronics = productLookup["Electronics"]; // Safe even if key doesn't exist (returns empty)
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -239,11 +262,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. DistinctBy: Removes duplicates based on a specific property (e.g., one product per category).
         var distinctCategories = _products.DistinctBy(p => p.Category);
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 3. Union: Combines sequences and removes duplicates.
@@ -251,11 +276,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 4. Intersect: Returns elements present in BOTH sequences.
         var intersection = numbers1.Intersect(numbers2); // 4, 5
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 5. Except: Returns elements from the first sequence that are NOT in the second.
@@ -263,11 +290,14 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 6. UnionBy, IntersectBy, ExceptBy: Same as above, but compares based on a specific key selector.
         var diffCustomers = _customers.ExceptBy(new[] { "Alice" }, c => c.Name);
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -280,11 +310,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. FirstOrDefault: Gets first element, returns default (null for objects) if empty. SAFEST.
         var missingProduct = _products.FirstOrDefault(p => p.Name == "NonExistent"); // Returns null
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 3. Last / LastOrDefault: Gets the last element. Note: Can be slow if not a list/array.
@@ -292,11 +324,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 4. Single: Gets the ONLY element matching. Throws if empty OR if > 1 match.
         var alice = _customers.Single(c => c.Name == "Alice");
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 5. SingleOrDefault: Gets the only match. Returns null if empty. Throws if > 1 match.
@@ -304,12 +338,15 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 6. ElementAt / ElementAtOrDefault: Gets element at specific index.
         var thirdProduct = _products.ElementAt(2); // Index 2
         var safeOob = _products.ElementAtOrDefault(100); // null
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -321,11 +358,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. Any (with predicate): Returns true if any element matches.
         var hasOutOfStock = _products.Any(p => p.Stock == 0);
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 3. All: Returns true if ALL elements match the predicate.
@@ -333,12 +372,15 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 4. Contains: Returns true if sequence contains the specific element.
         var specificCustomer = _customers.First();
         var hasCustomer = _customers.Contains(specificCustomer);
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -352,12 +394,14 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. Sum: Calculates the sum of numeric values.
         var totalStock = _products.Sum(p => p.Stock);
         var totalInventoryValue = _products.Sum(p => p.Stock * p.Price);
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 3. Min / Max: Gets the minimum / maximum scalar value.
@@ -366,6 +410,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 4. MinBy / MaxBy: Gets the ACTUAL OBJECT that has the min/max value. (Super useful!)
         var cheapestProduct = _products.MinBy(p => p.Price); // Returns a Product
@@ -373,11 +418,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 5. Average: Calculates the average of numeric values.
         var averagePrice = _products.Average(p => p.Price);
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 6. Aggregate: Custom folding/reduction (like Javascript's reduce).
@@ -386,6 +433,8 @@ public class LinqTest
             .Aggregate((current, next) => current + ", " + next); // Alice, Bob, Charlie, Diana
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -402,6 +451,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. GroupJoin: Left Outer Join equivalent (groups matching inner elements for each outer).
         var customerOrders = _customers.GroupJoin(
@@ -413,6 +463,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 3. Zip: Merges two sequences like a zipper (index 0 with index 0, index 1 with index 1).
         var numbers = new[] { 1, 2, 3 };
@@ -420,6 +471,8 @@ public class LinqTest
         var zipped = numbers.Zip(words, (n, w) => $"{n} = {w}"); // "1 = One", etc.
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -431,11 +484,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. Enumerable.Repeat: Generates a sequence that contains one repeated value.
         var tenAs = Enumerable.Repeat("A", 10);
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 3. Enumerable.Empty: Generates an empty sequence of a specific type (great for avoiding null returns).
@@ -443,12 +498,15 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 4. DefaultIfEmpty: Returns elements, or a default value (usually null/0) if the sequence is empty.
         var emptyList = new List<int>();
         var result = emptyList.DefaultIfEmpty(-1); // Returns a sequence containing [-1]
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -465,11 +523,13 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 2. ToArray: Executes query immediately and returns a T[].
         var array = query.ToArray();
 
         // YOUR TURN:
+
 
         // ---------------------------------------------------------
         // 3. ToDictionary: Executes and creates a dictionary using a key selector.
@@ -479,6 +539,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 4. ToDictionary (Key and Value selector):
         var nameToPrice = _products.ToDictionary(
@@ -487,11 +548,14 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // 5. ToHashSet: Executes and creates a HashSet (great for fast O(1) lookups and distinct values).
         var categorySet = _products.Select(p => p.Category).ToHashSet();
 
         // YOUR TURN:
+
+
     }
 
     [Fact]
@@ -509,6 +573,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // Challenge 2: Find the most expensive product in each category
         var topProductsByCategory = _products
@@ -521,6 +586,7 @@ public class LinqTest
 
         // YOUR TURN:
 
+
         // ---------------------------------------------------------
         // Challenge 3: Get a paginated list of products (Page 2, 3 items per page), sorted by name
         int pageNumber = 2;
@@ -532,5 +598,7 @@ public class LinqTest
             .ToList();
 
         // YOUR TURN:
+
+
     }
 }
