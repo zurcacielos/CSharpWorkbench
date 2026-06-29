@@ -59,6 +59,7 @@ public class LinqTest
         // YOUR TURN:
         var electronics2 = _products.Where(p => p.Category == "Electronics");
         var e3 = _products.Where(p => p.Category == "Electronics");
+        var e4 = _products.Where(p => p.Category == "Furniture");
 
         // ---------------------------------------------------------
         // 2. Where (with index): Filters based on condition AND index.
@@ -67,6 +68,7 @@ public class LinqTest
         // YOUR TURN:
         var e2p = _products.Where((p, index) => index % 2 == 1);
         var ep23 = _products.Where((p, i) => i % 2 == 1);
+        var ep4 = _products.Where((p, i) => i % 2 == 1);
 
         // ---------------------------------------------------------
         // 3. OfType: Filters elements of a specific type.
@@ -77,6 +79,7 @@ public class LinqTest
         var stringsO = mixedData.OfType<string>();
         var str3 = mixedData.OfType<int>();
         var str4 = mixedData.OfType<string>();
+        var str5 = mixedData.OfType<int>();
     }
 
     [Fact]
@@ -88,6 +91,7 @@ public class LinqTest
 
         // YOUR TURN:
         var pn = _products.Select(p => p.Name);
+        var pn2 = _products.Select(p => p.Name);
 
         // ---------------------------------------------------------
         // 2. Select (Anonymous types / Tuples): Creating new shapes of data.
@@ -95,6 +99,7 @@ public class LinqTest
 
         // YOUR TURN:
         var ps = _products.Select(p => new { p.Name, p.Price });
+        var ps2 = _products.Select(p => new { p.Name, p.Price });
 
 
         // ---------------------------------------------------------
@@ -103,6 +108,7 @@ public class LinqTest
 
         // YOUR TURN:
         var indexedN = _products.Select((p, index) => $"{index + 1}. {p.Name}");
+        var iN = _products.Select((p, i) => $"{i}. {p.Name}");
 
         // ---------------------------------------------------------
         // 4. SelectMany: Flattens a sequence of sequences.
@@ -112,6 +118,7 @@ public class LinqTest
 
         // YOUR TURN:
         var flat = nestedLists.SelectMany(list => list);
+        var f2 = nestedLists.SelectMany(list => list);
 
         // ---------------------------------------------------------
         // 5. Cast: Casts elements to a specific type (throws InvalidCastException if it fails).
@@ -120,6 +127,7 @@ public class LinqTest
 
         // YOUR TURN:
         var co = new object[] { 1, 2, 3 }.Cast<int>();
+        var co2 = new object[] { 1, 2 }.Cast<string>();
 
     }
 
@@ -131,7 +139,7 @@ public class LinqTest
         var top3 = _products.Take(3);
 
         // YOUR TURN:
-
+        var t3 = _products.Take(2);
 
         // ---------------------------------------------------------
         // 2. Take (Range/Last N): Gets the last N elements (using index from end, C# 8+)
@@ -139,35 +147,37 @@ public class LinqTest
         var last2 = _products.TakeLast(2);
 
         // YOUR TURN:
-
+        var last23 = _products.TakeLast(2);
 
         // ---------------------------------------------------------
         // 3. TakeWhile: Takes elements as long as a condition is true, stops at the first failure.
         var untilExpensive = _products.TakeWhile(p => p.Price < 1000m);
 
         // YOUR TURN:
-
+        var untilExpensive2 = _products.TakeWhile(p => p.Price < 1000m);
 
         // ---------------------------------------------------------
         // 4. Skip: Bypasses the first N elements.
         var skipFirst3 = _products.Skip(3);
 
         // YOUR TURN:
-
+        var sf3 = _products.Skip(3);
 
         // ---------------------------------------------------------
         // 5. SkipWhile: Bypasses elements as long as a condition is true, then returns the rest.
         var skipCheap = _products.SkipWhile(p => p.Price < 1000m);
 
         // YOUR TURN:
+        var sc = _products.SkipWhile(p => p.Price < 100m);
 
 
         // ---------------------------------------------------------
         // 6. Chunk: Splits elements into chunks of a given size. (Very useful for batch processing)
+        // [1, 2, 3, 4, 5, 6] => [[1, 2, 3], [4, 5, 6]]
         var productBatches = _products.Chunk(3); // Yields arrays of max 3 products
 
         // YOUR TURN:
-
+        var pb = _products.Chunk(3);
 
     }
 
@@ -179,14 +189,14 @@ public class LinqTest
         var sortedByPrice = _products.OrderBy(p => p.Price);
 
         // YOUR TURN:
-
+        var sBP = _products.OrderBy(p => p.Price);
 
         // ---------------------------------------------------------
         // 2. OrderByDescending: Sorts descending.
         var mostExpensiveFirst = _products.OrderByDescending(p => p.Price);
 
         // YOUR TURN:
-
+        var mef = _products.OrderByDescending(p => p.Price);
 
         // ---------------------------------------------------------
         // 3. ThenBy: Secondary sort ascending (used after OrderBy).
