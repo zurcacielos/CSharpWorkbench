@@ -146,6 +146,13 @@ Build an aggregator that receives raw records and produces report data grouped b
 - Add Seams and Unit Tests to Legacy, Untested Code
 - Introduce Caching (e.g., Redis) and Pagination to a Slow Endpoint
 
+## Entity Framework
+- Fix N+1 Query Problem in Entity Framework (Optimize data access)
+
+## xUnit Pitfalls
+
+- public async void MyTest()
+
 ## Testing Checklist
 
 - Happy path

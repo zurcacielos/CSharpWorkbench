@@ -61,9 +61,31 @@ public class DataFetcherBad
 // REFACTORED SOLUTION
 // ==============================================================================
 
+public interface IExternalApiClient
+{
+    Task<string> FetchUserDataAsync(int userId);
+}
+
+// We use an Adapter here because we pretend ExternalApiClient is a 3rd party 
+// class that we are not allowed to modify (e.g., to add an interface to it).
+public class ExternalApiClientAdapter : IExternalApiClient
+{
+    private readonly ExternalApiClient _client = new ExternalApiClient();
+    
+    public Task<string> FetchUserDataAsync(int userId)
+    {
+        return _client.FetchUserDataAsync(userId);
+    }
+}
+
 public class DataFetcherRefactored
 {
-    private readonly ExternalApiClient _apiClient = new ExternalApiClient();
+    private readonly IExternalApiClient _apiClient;
+
+    public DataFetcherRefactored(IExternalApiClient apiClient)
+    {
+        _apiClient = apiClient;
+    }
 
     // WHY THIS IS BETTER:
     // 1. The method signature is now explicitly async, returning a Task<string>.
@@ -82,6 +104,15 @@ public class DataFetcherRefactored
 // ==============================================================================
 // TESTS
 // ==============================================================================
+public class ExternalApiClientMock : IExternalApiClient
+{
+    public Task<string> FetchUserDataAsync(int userId)
+    {
+        // Mock returns immediately without any I/O delay simulation
+        return Task.FromResult($"MockData_For_{userId}");
+    }
+}
+
 public class AsyncAwaitTest
 {
     [Fact]
@@ -99,13 +130,13 @@ public class AsyncAwaitTest
     [Fact]
     public async Task RefactoredFetcher_ReturnsData_WithoutBlocking()
     {
-        var fetcher = new DataFetcherRefactored();
+        var fetcher = new DataFetcherRefactored(new ExternalApiClientMock());
         
         // WHY THIS IS BETTER:
         // Notice that the test method itself must be marked as `async Task`.
         // 'Async all the way down' spreads to the caller, ensuring no threads are blocked.
         var result = await fetcher.GetUserDataAsync(200);
         
-        Assert.Equal("UserData_For_200", result);
+        Assert.Equal("MockData_For_200", result);
     }
 }
