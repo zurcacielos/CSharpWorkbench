@@ -41,22 +41,28 @@ public class PaymentServiceBad
 // REFACTORED SOLUTION
 // ==============================================================================
 
+public enum PaymentError
+{
+    None = 0,
+    AmountCannotBeNegative = 1
+}
+
 // 1. The Result Wrapper
-public class Result<T>
+public class Result<TValue, TError>
 {
     public bool IsSuccess { get; }
-    public T Value { get; }
-    public string ErrorMessage { get; }
+    public TValue Value { get; }
+    public TError Error { get; }
 
-    private Result(bool isSuccess, T value, string errorMessage)
+    private Result(bool isSuccess, TValue value, TError error)
     {
         IsSuccess = isSuccess;
         Value = value;
-        ErrorMessage = errorMessage;
+        Error = error;
     }
 
-    public static Result<T> Success(T value) => new Result<T>(true, value, null);
-    public static Result<T> Failure(string errorMessage) => new Result<T>(false, default, errorMessage);
+    public static Result<TValue, TError> Success(TValue value) => new Result<TValue, TError>(true, value, default);
+    public static Result<TValue, TError> Failure(TError error) => new Result<TValue, TError>(false, default, error);
 }
 
 // 2. Refactored Service
@@ -65,14 +71,14 @@ public class PaymentServiceRefactored
     // WHY THIS IS BETTER:
     // 1. No expensive exceptions are thrown for expected validation flows.
     // 2. The signature explicitly tells the caller they must handle success/failure.
-    public Result<string> ProcessPayment(decimal amount)
+    public Result<string, PaymentError> ProcessPayment(decimal amount)
     {
         if (amount < 0)
         {
-            return Result<string>.Failure("Amount cannot be negative");
+            return Result<string, PaymentError>.Failure(PaymentError.AmountCannotBeNegative);
         }
         
-        return Result<string>.Success("Transaction_ABC123");
+        return Result<string, PaymentError>.Success("Transaction_ABC123");
     }
 }
 
@@ -89,6 +95,6 @@ public class ResultPatternTest
         var result = service.ProcessPayment(-50);
         
         Assert.False(result.IsSuccess);
-        Assert.Equal("Amount cannot be negative", result.ErrorMessage);
+        Assert.Equal(PaymentError.AmountCannotBeNegative, result.Error);
     }
 }

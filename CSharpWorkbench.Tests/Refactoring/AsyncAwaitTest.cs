@@ -68,6 +68,8 @@ public interface IExternalApiClient
 
 // We use an Adapter here because we pretend ExternalApiClient is a 3rd party 
 // class that we are not allowed to modify (e.g., to add an interface to it).
+// NOTE: This adapter is intended for the PRODUCTION code to instantiate DataFetcherRefactored, 
+// since it now strictly requires an injected IExternalApiClient dependency.
 public class ExternalApiClientAdapter : IExternalApiClient
 {
     private readonly ExternalApiClient _client = new ExternalApiClient();

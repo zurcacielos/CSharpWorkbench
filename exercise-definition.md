@@ -145,6 +145,7 @@ Build an aggregator that receives raw records and produces report data grouped b
 - Extract Hardcoded Values into the Options Pattern (IOptions<T>)
 - Add Seams and Unit Tests to Legacy, Untested Code
 - Introduce Caching (e.g., Redis) and Pagination to a Slow Endpoint
+- Encapsulate Business Logic into a Rich Domain Model (Fix Anemic Domain Model / God Class)
 
 ## Entity Framework
 - Fix N+1 Query Problem in Entity Framework (Optimize data access)
