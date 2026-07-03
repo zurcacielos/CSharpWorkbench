@@ -10,9 +10,9 @@ Small C#/.NET projects for backend services, API design, data handling, validati
 | C# fundamentals, OOP, LINQ, testing | High | 25% |
 | Easy CS / data-structure exercises | Medium | 15% |
 
-## Practical C# Exercises
+## [Practical C# Exercises](CSharpWorkbench.Tests/PracticalCSharpExercises)
 
-### Orders Summary
+### [Orders Summary](CSharpWorkbench.Tests/PracticalCSharpExercises/OrdersSummaryTest.cs)
 
 Build a component that receives a collection of orders and returns totals grouped by customer, status, and month. Include total revenue, cancelled orders, duplicate order IDs, and top customers by amount.
 
@@ -97,28 +97,28 @@ Build an aggregator that receives raw records and produces report data grouped b
 - EF Core Query
 - Application Logging
 
-## Easy CS / Data Structures
+## [Easy CS / Data Structures](CSharpWorkbench.Tests/EasyCSDataStructures)
 
-- Two Sum
-- Contains Duplicate
-- Valid Parentheses
-- First Non-Repeating Character
-- Merge Sorted Arrays
-- Group Anagrams
-- Top K Frequent Elements
-- Binary Search
-- Remove Duplicates from Sorted Array
-- Move Zeroes
-- Reverse Words in a String
-- Best Time to Buy and Sell Stock
-- Moving Average from Data Stream
-- Implement Queue using Stacks
-- Implement Stack using Queues
-- Min Stack
-- Merge Intervals
-- Valid Palindrome
-- Intersection of Two Arrays
-- Find Missing Number
+- [Two Sum](CSharpWorkbench.Tests/EasyCSDataStructures/TwoSumTest.cs)
+- [Contains Duplicate](CSharpWorkbench.Tests/EasyCSDataStructures/ContainsDuplicateTest.cs)
+- [Valid Parentheses](CSharpWorkbench.Tests/EasyCSDataStructures/ValidParenthesesTest.cs)
+- [First Non-Repeating Character](CSharpWorkbench.Tests/EasyCSDataStructures/FirstNonRepeatingCharacterTest.cs)
+- [Merge Sorted Arrays](CSharpWorkbench.Tests/EasyCSDataStructures/MergeSortedArraysTest.cs)
+- [Group Anagrams](CSharpWorkbench.Tests/EasyCSDataStructures/GroupAnagramsTest.cs)
+- [Top K Frequent Elements](CSharpWorkbench.Tests/EasyCSDataStructures/TopKFrequentElementsTest.cs)
+- [Binary Search](CSharpWorkbench.Tests/EasyCSDataStructures/BinarySearchTest.cs)
+- [Remove Duplicates from Sorted Array](CSharpWorkbench.Tests/EasyCSDataStructures/RemoveDuplicatesFromSortedArrayTest.cs)
+- [Move Zeroes](CSharpWorkbench.Tests/EasyCSDataStructures/MoveZeroesTest.cs)
+- [Reverse Words in a String](CSharpWorkbench.Tests/EasyCSDataStructures/ReverseWordsInAStringTest.cs)
+- [Best Time to Buy and Sell Stock](CSharpWorkbench.Tests/EasyCSDataStructures/BestTimeToBuyAndSellStockTest.cs)
+- [Moving Average from Data Stream](CSharpWorkbench.Tests/EasyCSDataStructures/MovingAverageFromDataStreamTest.cs)
+- [Implement Queue using Stacks](CSharpWorkbench.Tests/EasyCSDataStructures/ImplementQueueUsingStacksTest.cs)
+- [Implement Stack using Queues](CSharpWorkbench.Tests/EasyCSDataStructures/ImplementStackUsingQueuesTest.cs)
+- [Min Stack](CSharpWorkbench.Tests/EasyCSDataStructures/MinStackTest.cs)
+- [Merge Intervals](CSharpWorkbench.Tests/EasyCSDataStructures/MergeIntervalsTest.cs)
+- [Valid Palindrome](CSharpWorkbench.Tests/EasyCSDataStructures/ValidPalindromeTest.cs)
+- [Intersection of Two Arrays](CSharpWorkbench.Tests/EasyCSDataStructures/IntersectionOfTwoArraysTest.cs)
+- [Find Missing Number](CSharpWorkbench.Tests/EasyCSDataStructures/FindMissingNumberTest.cs)
 
 ## API Exercises
 
@@ -133,19 +133,19 @@ Build an aggregator that receives raw records and produces report data grouped b
 - Request Validation
 - Error Response Model
 
-## Refactoring
+## [Refactoring](CSharpWorkbench.Tests/Refactoring)
 
-- Extract Interface and Apply Dependency Injection (Break tight coupling)
-- Replace Complex Conditional logic with Strategy Pattern / Polymorphism
-- Refactor Synchronous Code to Async/Await (Fix blocking calls & deadlocks)
-- Decompose a "God Class" / Massive Controller (Single Responsibility Principle)
+- [Extract Interface and Apply Dependency Injection (Break tight coupling)](CSharpWorkbench.Tests/Refactoring/DependencyInjectionTest.cs)
+- [Replace Complex Conditional logic with Strategy Pattern / Polymorphism](CSharpWorkbench.Tests/Refactoring/StrategyPatternTest.cs)
+- [Refactor Synchronous Code to Async/Await (Fix blocking calls & deadlocks)](CSharpWorkbench.Tests/Refactoring/AsyncAwaitTest.local.cs)
+- [Decompose a "God Class" / Massive Controller (Single Responsibility Principle)](CSharpWorkbench.Tests/Refactoring/GodClassTest.cs)
 - Fix N+1 Query Problem in Entity Framework (Optimize data access)
-- Move Business Logic from Controllers to Services or CQRS Handlers
-- Refactor Error Handling to Use the Result Pattern or Global Middleware
-- Extract Hardcoded Values into the Options Pattern (IOptions<T>)
+- [Move Business Logic from Controllers to Services or CQRS Handlers](CSharpWorkbench.Tests/Refactoring/CqrsHandlersTest.cs)
+- [Refactor Error Handling to Use the Result Pattern or Global Middleware](CSharpWorkbench.Tests/Refactoring/ResultPatternTest.cs)
+- [Extract Hardcoded Values into the Options Pattern (IOptions<T>)](CSharpWorkbench.Tests/Refactoring/OptionsPatternTest.cs)
 - Add Seams and Unit Tests to Legacy, Untested Code
 - Introduce Caching (e.g., Redis) and Pagination to a Slow Endpoint
-- Encapsulate Business Logic into a Rich Domain Model (Fix Anemic Domain Model / God Class)
+- [Encapsulate Business Logic into a Rich Domain Model (Fix Anemic Domain Model / God Class)](CSharpWorkbench.Tests/Refactoring/RichDomainModelTest.cs)
 
 ## Entity Framework
 - Fix N+1 Query Problem in Entity Framework (Optimize data access)
