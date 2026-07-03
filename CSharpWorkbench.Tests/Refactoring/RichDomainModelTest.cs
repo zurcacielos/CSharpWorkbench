@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CSharpWorkbench.Tests.Refactoring.RichDomain;
+
 
 // ==============================================================================
 // EXERCISE: Encapsulate Business Logic into a Rich Domain Model
@@ -25,7 +25,7 @@ namespace CSharpWorkbench.Tests.Refactoring.RichDomain;
 // 4. Delegated DB access to a repository and emails to a notification service.
 // ==============================================================================
 
-namespace Bad 
+namespace CSharpWorkbench.Tests.Refactoring.RichDomain.Bad 
 {
     // --- Infrastructure Interfaces for Simulation ---
     public interface IDbContext
@@ -77,7 +77,7 @@ namespace Bad
     }
 }
 
-namespace Refactored 
+namespace CSharpWorkbench.Tests.Refactoring.RichDomain.Refactored 
 {
     // New Enums & Records for Domain Language
     public enum OrderStatus
@@ -181,7 +181,7 @@ namespace Refactored
 // ==============================================================================
 // TESTS
 // ==============================================================================
-public class RichDomainModelTest
+namespace CSharpWorkbench.Tests.Refactoring.RichDomain { public class RichDomainModelTest
 {
     // Fake Repository for testing
     private class FakeOrderRepository : Refactored.IOrderRepository
@@ -240,3 +240,6 @@ public class RichDomainModelTest
         Assert.Equal(Refactored.OrderStatus.Approved, order.Status);
     }
 }
+
+}
+
